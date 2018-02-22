@@ -1,39 +1,37 @@
-Introduction
+介绍
 ============
 
-This is the documentation for Twig, the flexible, fast, and secure template
-engine for PHP.
+Twig 是一个灵活，快速，并且安全的 PHP 模板引擎。
 
-If you have any exposure to other text-based template languages, such as
-Smarty, Django, or Jinja, you should feel right at home with Twig. It's both
-designer and developer friendly by sticking to PHP's principles and adding
-functionality useful for templating environments.
+如果你接触过其它的基于文本的模板引擎，例如 Smarty, Django, 或者 Jinja，那么你应该对
+Twig 感到亲切。由于坚持PHP的原则，为模板环境添加有用的功能，所以对模板设计师和开发人员
+都是非常友善的。
 
-The key-features are...
 
-* *Fast*: Twig compiles templates down to plain optimized PHP code. The
-  overhead compared to regular PHP code was reduced to the very minimum.
+关键功能有...
 
-* *Secure*: Twig has a sandbox mode to evaluate untrusted template code. This
-  allows Twig to be used as a template language for applications where users
-  may modify the template design.
+* *快速*:Twig将模板编译为纯粹的，最优化的PHP代码。它的开销与常规的PHP代码相比，
+已经降到了极低。
 
-* *Flexible*: Twig is powered by a flexible lexer and parser. This allows the
-  developer to define their own custom tags and filters, and to create their own DSL.
+* *安全*: Twig 有一个沙盒模板来评估不受信任的模板代码。这使得Twig可以用于允许用户自行修改
+模板设计的应用程序中。
 
-Twig is used by many Open-Source projects like Symfony, Drupal8, eZPublish,
-phpBB, Piwik, OroCRM; and many frameworks have support for it as well like
-Slim, Yii, Laravel, Codeigniter and Kohana — just to name a few.
+* *灵活*: Twig采用灵活的词法分析器和解析器. 这允许开发者定义自己的标签以及过滤器并创建自己的
+DSL
 
-Prerequisites
+Twig已被用于许多开源项目，比如Symfony, Drupal8, eZPublish,phpBB, Piwik, OroCRM；并且许多框架也支持它，
+例如Slim, Yii, Laravel, Codeigniter and Kohana — 就举这几个例子。
+
+
+要求
 -------------
 
-Twig needs at least **PHP 7.0.0** to run.
+Twig 需要 **PHP 7.0.0** 以上才能运行（2.x以上，1.x不需要）.
 
-Installation
+安装
 ------------
 
-The recommended way to install Twig is via Composer:
+推荐使用 Composer 来安装 Twig:
 
 .. code-block:: bash
 
@@ -41,14 +39,13 @@ The recommended way to install Twig is via Composer:
 
 .. note::
 
-    To learn more about the other installation methods, read the
-    :doc:`installation<installation>` chapter; it also explains how to install
-    the Twig C extension.
+    想要了解更多安装方式, 阅读
+    :doc:`installation<installation>` 一节; 它还解释了如何安装Twig C扩展。
 
-Basic API Usage
+基本 API Us用法age
 ---------------
 
-This section gives you a brief introduction to the PHP API for Twig.
+本节将简要介绍Twig的PHP API。
 
 .. code-block:: php
 
@@ -61,14 +58,12 @@ This section gives you a brief introduction to the PHP API for Twig.
 
     echo $twig->render('index', array('name' => 'Fabien'));
 
-Twig uses a loader (``Twig_Loader_Array``) to locate templates, and an
-environment (``Twig_Environment``) to store the configuration.
+Twig 使用加载器（loader） (``Twig_Loader_Array``) 来定位模板, 使用环境（environment） 
+(``Twig_Environment``) 来保存配置.
 
-The ``render()`` method loads the template passed as a first argument and
-renders it with the variables passed as a second argument.
+ ``render()`` 方法第一个参数传递模板，第二个参数传递变量。
 
-As templates are generally stored on the filesystem, Twig also comes with a
-filesystem loader::
+由于模板文件通常存在文件系统中，Twig 因此提供了一个文件系统加载器::
 
     $loader = new Twig_Loader_Filesystem('/path/to/templates');
     $twig = new Twig_Environment($loader, array(

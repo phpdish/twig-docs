@@ -1,22 +1,18 @@
-Twig for Template Designers
+模板设计师篇
 ===========================
 
-This document describes the syntax and semantics of the template engine and
-will be most useful as reference to those creating Twig templates.
+本文档介绍模板引擎的语法和语义，对创建 Twig 模板的人来说这是最有用的参考。
 
-Synopsis
+该要
 --------
 
-A template is simply a text file. It can generate any text-based format (HTML,
-XML, CSV, LaTeX, etc.). It doesn't have a specific extension, ``.html`` or
-``.xml`` are just fine.
+模板是一个简单的纯文本文件。 它可以是任意的文本格式（HTML, XML, CSV, LaTeX, 等等 ）。
+它没有特定的扩展名，``.html`` 或者``.xml`` 都行。
 
-A template contains **variables** or **expressions**, which get replaced with
-values when the template is evaluated, and **tags**, which control the logic
-of the template.
+一个模板包含 **变量variables** 或者 **表达式expressions**, 这些在评估模板时都会被替换,
+以及控制着模板逻辑的**标签tags**。
 
-Below is a minimal template that illustrates a few basics. We will cover further
-details later on:
+下面是一个简单的模板。后面我们会介绍更多细节：
 
 .. code-block:: html+jinja
 
@@ -37,29 +33,28 @@ details later on:
         </body>
     </html>
 
-There are two kinds of delimiters: ``{% ... %}`` and ``{{ ... }}``. The first
-one is used to execute statements such as for-loops, the latter prints the
-result of an expression to the template.
+有两种形式的分隔符: ``{% ... %}`` 和 ``{{ ... }}``.第一个用于执行语句，比如 for 循环，
+后者用于将表达式的结果输出到模板里。
 
-IDEs Integration
+IDEs 集成
 ----------------
 
-Many IDEs support syntax highlighting and auto-completion for Twig:
+很多IDE都支持Twig的语法高亮和自动完成
 
-* *Textmate* via the `Twig bundle`_
-* *Vim* via the `Jinja syntax plugin`_ or the `vim-twig plugin`_
-* *Netbeans* via the `Twig syntax plugin`_ (until 7.1, native as of 7.2)
-* *PhpStorm* (native as of 2.1)
-* *Eclipse* via the `Twig plugin`_
-* *Sublime Text* via the `Twig bundle`_
-* *GtkSourceView* via the `Twig language definition`_ (used by gedit and other projects)
-* *Coda* and *SubEthaEdit* via the `Twig syntax mode`_
-* *Coda 2* via the `other Twig syntax mode`_
-* *Komodo* and *Komodo Edit* via the Twig highlight/syntax check mode
-* *Notepad++* via the `Notepad++ Twig Highlighter`_
+* *Textmate* 通过 `Twig bundle`_
+* *Vim* 通过 `Jinja syntax plugin`_ 或者 `vim-twig plugin`_
+* *Netbeans* 通过 `Twig syntax plugin`_ (until 7.1, native as of 7.2)
+* *PhpStorm* (自2.1起)
+* *Eclipse* 通过 `Twig plugin`_
+* *Sublime Text* 通过 `Twig bundle`_
+* *GtkSourceView* 通过 `Twig language definition`_ (used by gedit and other projects)
+* *Coda* and *SubEthaEdit* 通过 `Twig syntax mode`_
+* *Coda 2* 通过 `other Twig syntax mode`_
+* *Komodo* and *Komodo Edit* 通过 Twig highlight/syntax check mode
+* *Notepad++* 通过 `Notepad++ Twig Highlighter`_
 * *Emacs* via `web-mode.el`_
-* *Atom* via the `PHP-twig for atom`_
-* *Visual Studio Code* via the `Twig pack`_
+* *Atom* 通过 `PHP-twig for atom`_
+* *Visual Studio Code* 通过 `Twig pack`_
 
 Also, `TwigFiddle`_ is an online service that allows you to execute Twig templates
 from a browser; it supports all versions of Twig.
@@ -422,7 +417,7 @@ everything by default.
 
 Twig supports both, automatic escaping is enabled by default.
 
-The automatic escaping strategy can be configured via the
+The automatic escaping strategy can be configured 通过
 :ref:`autoescape<environment_options>` option and defaults to ``html``.
 
 Working with Manual Escaping

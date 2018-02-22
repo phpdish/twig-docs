@@ -1,29 +1,29 @@
-Installation
+安装
 ============
 
-You have multiple ways to install Twig.
+有好几种方法可以安装Twig.
 
-Installing the Twig PHP package
+安装 Twig PHP包
 -------------------------------
 
-Installing via Composer (recommended)
+通过 Composer 安装 (推荐)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Install `Composer`_ and run the following command to get the latest version:
+安装 `Composer`_ 并且执行下面命令来安装最新版本:
 
 .. code-block:: bash
 
     composer require twig/twig:~2.0
 
-Installing from the tarball release
+从发行的压缩包安装
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Download the most recent tarball from the `download page`_
-2. Verify the integrity of the tarball http://fabien.potencier.org/article/73/signing-project-releases
-3. Unpack the tarball
-4. Move the files somewhere in your project
+1. 在 `download page`_ 下载最新的压缩包
+2. 验证压缩包的完整性 http://fabien.potencier.org/article/73/signing-project-releases
+3. 解压压缩包
+4. 移动文件到你项目的某个目录下
 
-Installing the development version
+安装开发版本
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
