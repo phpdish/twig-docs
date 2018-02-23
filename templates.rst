@@ -121,8 +121,7 @@ IDEs 集成
 设置变量
 ~~~~~~~~~~~~~~~~~
 
-You can assign values to variables inside code blocks. Assignments use the
-:doc:`set<tags/set>` tag:
+你可以在代码块里为变量赋值，使用 :doc:`set<tags/set>` 标签:
 
 .. code-block:: jinja
 
