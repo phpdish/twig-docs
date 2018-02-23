@@ -48,37 +48,31 @@ IDEs 集成
 * *Eclipse* 通过 `Twig plugin`_
 * *Sublime Text* 通过 `Twig bundle`_
 * *GtkSourceView* 通过 `Twig language definition`_ (used by gedit and other projects)
-* *Coda* and *SubEthaEdit* 通过 `Twig syntax mode`_
+* *Coda* 和 *SubEthaEdit* 通过 `Twig syntax mode`_
 * *Coda 2* 通过 `other Twig syntax mode`_
-* *Komodo* and *Komodo Edit* 通过 Twig highlight/syntax check mode
+* *Komodo* 和 *Komodo Edit* 通过 Twig highlight/syntax check mode
 * *Notepad++* 通过 `Notepad++ Twig Highlighter`_
-* *Emacs* via `web-mode.el`_
+* *Emacs* 通过 `web-mode.el`_
 * *Atom* 通过 `PHP-twig for atom`_
 * *Visual Studio Code* 通过 `Twig pack`_
 
-Also, `TwigFiddle`_ is an online service that allows you to execute Twig templates
-from a browser; it supports all versions of Twig.
+此外, `TwigFiddle`_ 是一个在线服务允许你在浏览器里执行 Twig 的模板；它支持 Twig 的所有版本。
 
-Variables
+变量
 ---------
 
-The application passes variables to the templates for manipulation in the
-template. Variables may have attributes or elements you can access,
-too. The visual representation of a variable depends heavily on the application providing
-it.
+应用程序传递变量到模板里来进行处理。变量可以有很多可以访问的属性或者元素。变量的可视化表示在
+很大程度上取决于提供变量的应用程序。
 
-You can use a dot (``.``) to access attributes of a variable (methods or
-properties of a PHP object, or items of a PHP array), or the so-called
-"subscript" syntax (``[]``):
+你可以使用点号 (``.``) 来访问变量的属性 (方法或者 PHP 对象的属性，又或者 PHP 数组元素,也可以使用
+所谓的 “标 subscript” 语法(``[]``):
 
 .. code-block:: jinja
 
     {{ foo.bar }}
     {{ foo['bar'] }}
 
-When the attribute contains special characters (like ``-`` that would be
-interpreted as the minus operator), use the ``attribute`` function instead to
-access the variable attribute:
+当属性包含特殊字符时 (比如 ``-`` 将被解析为减号), 使用 ``attribute`` 函数代替去访问变量的属性:
 
 .. code-block:: jinja
 
@@ -87,48 +81,44 @@ access the variable attribute:
 
 .. note::
 
-    It's important to know that the curly braces are *not* part of the
-    variable but the print statement. When accessing variables inside tags,
-    don't put the braces around them.
+    你必须知道花括号并*不是* 变量的一部分，只是一个打印的声明。当在标签内访问变量的时候，不要将其放在
+    花括号中。
 
-If a variable or attribute does not exist, you will receive a ``null`` value
-when the ``strict_variables`` option is set to ``false``; alternatively, if ``strict_variables``
-is set, Twig will throw an error (see :ref:`environment options<environment_options>`).
+如果一个变量或者属性不存在，当  ``strict_variables`` 选项被设置为 ``false`` 时你会收到 ``null`` 值。
+另外，如果 ``strict_variables`` 被设置了，Twig将抛出一个错误(查看 :ref:`环境选项<environment_options>`)。
 
-.. sidebar:: Implementation
+.. sidebar:: 实现
 
-    For convenience's sake ``foo.bar`` does the following things on the PHP
-    layer:
+    为了方便 ``foo.bar`` 在 PHP 层做了这些事情:
 
-    * check if ``foo`` is an array and ``bar`` a valid element;
-    * if not, and if ``foo`` is an object, check that ``bar`` is a valid property;
-    * if not, and if ``foo`` is an object, check that ``bar`` is a valid method
-      (even if ``bar`` is the constructor - use ``__construct()`` instead);
-    * if not, and if ``foo`` is an object, check that ``getBar`` is a valid method;
-    * if not, and if ``foo`` is an object, check that ``isBar`` is a valid method;
-    * if not, and if ``foo`` is an object, check that ``hasBar`` is a valid method;
-    * if not, return a ``null`` value.
+    * 检查 ``foo`` 是否是数组， ``bar`` 是不是有效的元素;
+    * 如果不是, 检查 ``foo`` 是否是对象, 检查 ``bar`` 是不是有效属性;
+    * 如果不是, 检查 ``foo`` 是否是对象, 检查 ``bar`` 是不是有效方法
+      (即使 ``bar`` 是构造函数 - 使用 ``__construct()`` 代替);
+    * 如果不是, 检查 ``foo`` 是否是对象, 检查 ``getBar`` 是不是有效方法;
+    * 如果不是, 检查 ``foo`` 是否是对象, 检查 ``isBar`` 是不是有效方法;
+    * 如果不是, 检查 ``foo`` 是否是对象, 检查 ``hasBar`` 是不是有效方法;
+    * 如果不是, 返回 ``null`` 值。
 
-    ``foo['bar']`` on the other hand only works with PHP arrays:
+    ``foo['bar']`` 在另一方面值适用于PHP 数组:
 
-    * check if ``foo`` is an array and ``bar`` a valid element;
-    * if not, return a ``null`` value.
+    *检查 ``foo`` 是否是数组， ``bar`` 是不是有效的元素;
+    * 如果不是, 返回 ``null`` 值。
 
 .. note::
 
-    If you want to access a dynamic attribute of a variable, use the
-    :doc:`attribute<functions/attribute>` function instead.
+    如果你想访问变量的动态属性, 使用 :doc:`attribute<functions/attribute>` 函数代替.
 
-Global Variables
+全局变量
 ~~~~~~~~~~~~~~~~
 
-The following variables are always available in templates:
+以下变量在模板中始终可用:
 
-* ``_self``: references the current template name;
-* ``_context``: references the current context;
-* ``_charset``: references the current charset.
+* ``_self``: 引用当前模板;
+* ``_context``: 引用当前上下文;
+* ``_charset``: 引用当前字符集。
 
-Setting Variables
+设置变量
 ~~~~~~~~~~~~~~~~~
 
 You can assign values to variables inside code blocks. Assignments use the
