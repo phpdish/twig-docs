@@ -129,30 +129,25 @@ IDEs 集成
     {% set foo = [1, 2] %}
     {% set foo = {'foo': 'bar'} %}
 
-Filters
+过滤器
 -------
 
-Variables can be modified by **filters**. Filters are separated from the
-variable by a pipe symbol (``|``) and may have optional arguments in
-parentheses. Multiple filters can be chained. The output of one filter is
-applied to the next.
+变量乐意通过 **filters** 进行修改. 过滤器通过竖线(``|``)与变量分割开来,可能有多个可选参数，写在
+括号里即可。 多个过滤器可以串联在一齐。一个过滤器的输出结果将应用为下一个过滤器。
 
-The following example removes all HTML tags from the ``name`` and title-cases
-it:
+下面的例子展示了移除 ``name`` 中所有的 html 标签并将单词首字母大写:
 
 .. code-block:: jinja
 
     {{ name|striptags|title }}
 
-Filters that accept arguments have parentheses around the arguments. This
-example will join a list by commas:
+过滤器可以在括号里接收参数。下面的例子展示了怎么样用逗号连接一个列表:
 
 .. code-block:: jinja
 
     {{ list|join(', ') }}
 
-To apply a filter on a section of code, wrap it in the
-:doc:`filter<tags/filter>` tag:
+要在一段代码中应用过滤器的话，你需要把它们包裹在标签 :doc:`filter<tags/filter>` 里:
 
 .. code-block:: jinja
 
@@ -160,17 +155,15 @@ To apply a filter on a section of code, wrap it in the
         This text becomes uppercase
     {% endfilter %}
 
-Go to the :doc:`filters<filters/index>` page to learn more about built-in
-filters.
+查看 :doc:`filters<filters/index>` 章节了解更多内建的过滤器。
 
-Functions
+函数
 ---------
 
-Functions can be called to generate content. Functions are called by their
-name followed by parentheses (``()``) and may have arguments.
+函数可以用于生产一段内容。通过函数名进行调用，紧跟括号(``()``)，如果有参数则在其中设置参数。
 
-For instance, the ``range`` function returns a list containing an arithmetic
-progression of integers:
+
+例如, 函数 ``range`` 返回一个包含整数运算级数的列表:
 
 .. code-block:: jinja
 
@@ -178,10 +171,9 @@ progression of integers:
         {{ i }},
     {% endfor %}
 
-Go to the :doc:`functions<functions/index>` page to learn more about the
-built-in functions.
+参考 :doc:`functions<functions/index>` 页面了解更多内建函数。
 
-Named Arguments
+命名参数
 ---------------
 
 .. code-block:: jinja
@@ -190,8 +182,7 @@ Named Arguments
         {{ i }},
     {% endfor %}
 
-Using named arguments makes your templates more explicit about the meaning of
-the values you pass as arguments:
+使用命名参数可以将你的模板中的传递的参数的意义变得更加清晰：
 
 .. code-block:: jinja
 
@@ -201,19 +192,18 @@ the values you pass as arguments:
 
     {{ data|convert_encoding(from='iso-2022-jp', to='UTF-8') }}
 
-Named arguments also allow you to skip some arguments for which you don't want
-to change the default value:
+命名参数也允许你跳过一些你不想改变默认值的参数：
 
 .. code-block:: jinja
 
-    {# the first argument is the date format, which defaults to the global date format if null is passed #}
+    {# 第一个参数是日期格式（format），如果传递的是空值，它将是默认的全局日期格式 #}
     {{ "now"|date(null, "Europe/Paris") }}
 
-    {# or skip the format value by using a named argument for the time zone #}
+    {# 或者通过为时区使用一个命名实参来跳过日期格式（format） #}
     {{ "now"|date(timezone="Europe/Paris") }}
 
-You can also use both positional and named arguments in one call, in which
-case positional arguments must always come before named arguments:
+你也可以在一次调用中同时使用位置和命名参数。这种情况下位置参数必须一致在命名参数
+的前面:
 
 .. code-block:: jinja
 
@@ -221,19 +211,15 @@ case positional arguments must always come before named arguments:
 
 .. tip::
 
-    Each function and filter documentation page has a section where the names
-    of all arguments are listed when supported.
+    每个函数和过滤器的文档页面都有一节专门介绍他们支持的所有的参数。
 
-Control Structure
+控制结构
 -----------------
 
-A control structure refers to all those things that control the flow of a
-program - conditionals (i.e. ``if``/``elseif``/``else``), ``for``-loops, as
-well as things like blocks. Control structures appear inside ``{% ... %}``
-blocks.
+控制结构是指所有的控制程序流程的东西 - 条件语句 (例如：``if``/``elseif``/``else``)
+``for`` 循环以及程序块。控制结构必须放置在  ``{% ... %}`` 块中。
 
-For example, to display a list of users provided in a variable called
-``users``, use the :doc:`for<tags/for>` tag:
+例如，要显示变量``users`` 中提供的所有的用户。使用 :doc:`for<tags/for>` 标签:
 
 .. code-block:: jinja
 
@@ -244,7 +230,7 @@ For example, to display a list of users provided in a variable called
         {% endfor %}
     </ul>
 
-The :doc:`if<tags/if>` tag can be used to test an expression:
+:doc:`if<tags/if>` 标签可以用来测试一段表达式:
 
 .. code-block:: jinja
 
@@ -256,14 +242,13 @@ The :doc:`if<tags/if>` tag can be used to test an expression:
         </ul>
     {% endif %}
 
-Go to the :doc:`tags<tags/index>` page to learn more about the built-in tags.
+参阅 :doc:`tags<tags/index>` 页面了解更多内置的标签
 
-Comments
+注释
 --------
 
-To comment-out part of a line in a template, use the comment syntax ``{# ...
-#}``. This is useful for debugging or to add information for other template
-designers or yourself:
+要注释模板中的一行或多行请使用注释语法  ``{# ... #}``。在调试或者给其它开发者也或你自己
+添加注释信息时非常有用:
 
 .. code-block:: jinja
 
@@ -273,19 +258,17 @@ designers or yourself:
         {% endfor %}
     #}
 
-Including other Templates
+引入其它模板
 -------------------------
 
-The :doc:`include<functions/include>` function is useful to include a template
-and return the rendered content of that template into the current one:
+:doc:`include<functions/include>` 函数用于引入一个模板并返回那个模板的渲染结果到当前模板中:
 
 .. code-block:: jinja
 
     {{ include('sidebar.html') }}
 
-By default, included templates have access to the same context as the template
-which includes them. This means that any variable defined in the main template
-will be available in the included template too:
+默认情况下，被引入的模板可以访问引入它们的模板的上下文(context)。这表示主模板中定义的任意变量在
+被引入的模板中也是可用的：
 
 .. code-block:: jinja
 
@@ -293,31 +276,27 @@ will be available in the included template too:
         {{ include('render_box.html') }}
     {% endfor %}
 
-The included template ``render_box.html`` is able to access the ``box`` variable.
+被引入的模板 ``render_box.html`` 可以访问 ``box`` 变量。
 
-The filename of the template depends on the template loader. For instance, the
-``Twig_Loader_Filesystem`` allows you to access other templates by giving the
-filename. You can access templates in subdirectories with a slash:
+传参的模板文件名取决于你设置的模板加载器。例如，``Twig_Loader_Filesystem`` 加载器允许你通过给定
+的文件名访问其它模板。你可以使用斜线来访问子目录内的模板：
 
 .. code-block:: jinja
 
     {{ include('sections/articles/sidebar.html') }}
 
-This behavior depends on the application embedding Twig.
+这种行为取决于内嵌 Twig 的应用。
 
-Template Inheritance
+模板继承
 --------------------
 
-The most powerful part of Twig is template inheritance. Template inheritance
-allows you to build a base "skeleton" template that contains all the common
-elements of your site and defines **blocks** that child templates can
-override.
+Twig 最强大的一部分就是模板集成。模板集成可以让你建立一个包含你网站所有通用元素的 "骨架（skeleton）" 
+模板。定义 **blocks** ，这允许你在子模板里覆盖。
 
-Sounds complicated but it is very basic. It's easier to understand it by
-starting with an example.
+听起来很复杂但用起来很简单。通过一个例子会更直白点。
 
-Let's define a base template, ``base.html``, which defines a simple HTML
-skeleton document that you might use for a simple two-column page:
+假设我们定义了一个基本模板 ``base.html``，它是一个简单的 HTMl 骨架文件，你可以在一个简单的两栏页面上
+用到它:
 
 .. code-block:: html+jinja
 
@@ -339,12 +318,10 @@ skeleton document that you might use for a simple two-column page:
         </body>
     </html>
 
-In this example, the :doc:`block<tags/block>` tags define four blocks that
-child templates can fill in. All the ``block`` tag does is to tell the
-template engine that a child template may override those portions of the
-template.
+这个例子中定义了四个标签 :doc:`block<tags/block>`，可以在子模板中填充。所有的 ``block`` 标签都是
+用来告诉模板引擎这部分内容可以让子模板覆写。
 
-A child template might look like this:
+子模板大概是这个样子:
 
 .. code-block:: jinja
 
@@ -364,17 +341,12 @@ A child template might look like this:
         </p>
     {% endblock %}
 
-The :doc:`extends<tags/extends>` tag is the key here. It tells the template
-engine that this template "extends" another template. When the template system
-evaluates this template, first it locates the parent. The extends tag should
-be the first tag in the template.
+:doc:`extends<tags/extends>` 标签在这里很关键. 它用来告诉模板引擎这个模板 "继承extends"
+了其它模板。当模板系统评估到这个模板的时候回首先定位到父模板。继承标签必须是模板的第一个标签。
 
-Note that since the child template doesn't define the ``footer`` block, the
-value from the parent template is used instead.
+注意子模板没有定义 ``footer`` 块，所以这部分内容会使用父模板里的对应的块的内容代替。
 
-It's possible to render the contents of the parent block by using the
-:doc:`parent<functions/parent>` function. This gives back the results of the
-parent block:
+可以使用 :doc:`parent<functions/parent>` 函数来渲染父级块，这回返回父级块的渲染结果:
 
 .. code-block:: jinja
 
@@ -384,30 +356,26 @@ parent block:
         {{ parent() }}
     {% endblock %}
 
-.. tip::
+.. 提示::
 
-    The documentation page for the :doc:`extends<tags/extends>` tag describes
-    more advanced features like block nesting, scope, dynamic inheritance, and
-    conditional inheritance.
+    在 :doc:`extends<tags/extends>` 标签的文档页面描述了更多高级特性，像 块嵌套，范围，动态继承
+    以及条件继承等。
 
-.. note::
+.. 注意::
 
-    Twig also supports multiple inheritance with the so called horizontal reuse
-    with the help of the :doc:`use<tags/use>` tag. This is an advanced feature
-    hardly ever needed in regular templates.
+    在 :doc:`use<tags/use>` 标签的帮助下，Twig也支持多继承以及所谓的横向重用（horizontal reuse）
+    这是个高级特性，在一般模板里很难用的到。
 
-HTML Escaping
+HTML 转移
 -------------
 
-When generating HTML from templates, there's always a risk that a variable
-will include characters that affect the resulting HTML. There are two
-approaches: manually escaping each variable or automatically escaping
-everything by default.
+当从模板生成 HTML 的时候，一直存在一种风险，某个变量里包含了会影响 HTMl 结果的字符。有两种方法可以避免：
+手动转移每个变量或者默认自动地转移全部变量。
 
-Twig supports both, automatic escaping is enabled by default.
+Twig 支持两种方式, 默认启用自动转义。
 
-The automatic escaping strategy can be configured 通过
-:ref:`autoescape<environment_options>` option and defaults to ``html``.
+自动转义策略可以通过配置 :ref:`autoescape<environment_options>` 选项来开启。默认是 ``html``。
+
 
 Working with Manual Escaping
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
